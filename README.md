@@ -19,33 +19,25 @@ The BC Stream Inventory Sample Sites (SISS records) is a valuable database that 
 
 ## Methods
 
-Below is a short, illustrative Methods section. Adapt this to describe your own data processing, analysis, or experimental workflow.
+The following steps were applied to filter out SISS records that had obvious issues. Automated geocoding steps were also undertaken to ensure that SISS records snapped on to the correct stream reach in the BCFWA. This is essnetial since snapping by distance alone generally results in numerous issues as records from mainstem reaches snap to tributaries and visaversa.
 
-1. **Data Collection**  
-   - Raw data were obtained from publicly available sources, including government open-data portals and partner organizations.  
-   - Each dataset was downloaded in CSV format and stored in the `data/raw/` directory.
 
-2. **Data Cleaning & Preprocessing**  
-   - The raw CSV files were inspected for missing values, inconsistent formatting, and duplicate records.  
-   - Custom R scripts (see `scripts/cleanup.R`) were used to normalize column names, cast data types, and remove any records with critical fields missing.  
-   - All date fields were standardized to ISO 8601 format (`YYYY-MM-DD`).
+- SISS records were downloaded from the BC Data Catalogue on April 30, 2022.
+- Several steps and sub-steps were undertaken to ensure that SISS records were successfully joined to the correct BCFWA stream reach. For each record, the following processing steps were followed:
+  1. First, we excluded all stream reaches that were 1,500 m away from the SISS records location.
+  2. Next, we reviewed the watershed code `NEW_WS_CD`. If a watershed code was defined (not NULL) then we excluded all BCFWA stream reaches that did not contain a matching BC Bluelines 50K code ` WATERSHED_CODE_50K` from the BCFWA.
+  3. Points were then snapped onto the closest line segment. The old coordinates are recorded in columns `GIS_UTM_EASTING` and `GIS_UTM_NORTHING`. The new x, y, and z (elevation) coordinates are recorded in columns `new_x`, `new_y`, `new_z`, along with the snapping distance ` snap_dist` in meters.
+  4. Additional checks were performed to ensure that the stream name (if present) in the SISS records matched the stream name in the BCFWA (GAZTD_NAME and GAZETTED_NAME). Variations in spelling were allowed by up to five characters and manually reviewed.
+  5. We discarded any records with a survey date < 1950, assuming that these would have georeferencing errors.
+  6. We also excluded records where the reported wetted width or bankfull width was over 300m, instances where a visible channel was reported “No”, instances where the channel width or wetted width was reported as 0, and instances where the channel width was greater than the wetted width.
+- These data processing and data cleaning steps (in our opinion) alleviated many of the errors and anomalies in the raw BC SISS dataset. We also added additional field attributes from the BCFWA to support various future analysis and modelling tasks from the SISS records.
+- This data filtering exercise results in about ~65,000 SISS records successfully snapped to BCFWA stream reaches.
 
-3. **Data Analysis**  
-   - Processed data were imported into an R environment.  
-   - Summary statistics (mean, median, standard deviation) were computed for each numeric field.  
-   - A simple linear regression model was fit to explore the relationship between `Variable_A` and `Variable_B`.  
-   - Visualization scripts (in `scripts/visualize.R`) generate time series plots and scatterplots to illustrate key findings.
 
-4. **Reproducibility**  
-   - All dependencies are listed in `requirements.txt` (for Python) or `DESCRIPTION` (for R).  
-   - To reproduce the analysis, install the dependencies and run the scripts in order:
-     1. `scripts/cleanup.R`
-     2. `scripts/analyze.R`
-     3. `scripts/visualize.R`
 
-## Data Dictionary
+## Field Attributes
 
-The following table describes the columns in `data/processed/sample_data.csv`. Feel free to extend this table with additional fields as needed.
+The following table describes the columns in `siss_records_bcfwa.csv`.
 
 | Column Name        | Data Type    | Description                                                    |
 |--------------------|--------------|----------------------------------------------------------------|
