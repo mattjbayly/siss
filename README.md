@@ -1,19 +1,17 @@
 # BC Stream Inventory Sample Sites and BCFWA
-BC Stream Inventory Sample Sites and BCFWA
+
 
 
 https://catalogue.data.gov.bc.ca/dataset/stream-inventory-sample-sites/resource/6730ec79-9e70-4fc1-a021-6530a8910686
 
-# Project Title
-
-<!--  
-Replace "Project Title" with the name of your repository.  
-Add additional badges or status icons here if desired.  
--->
 
 ## Overview
 
-This project aims to demonstrate a typical GitHub README structure, including an overview, methods, and a data dictionary table for a CSV file. You can replace the placeholder text with information specific to your own project. The goal is to provide readers with a concise introduction to the project’s purpose, scope, and high-level approach.
+The BC Stream Inventory Sample Sites (SISS records) is a valuable database that compiles thousands of standardized instream measurements from the BC Fisheries Information Summary System (FISS) records across BC. This analysis applied various filter criteria and rules to snap the BC Stream Inventory Sample Sites point observations onto stream reaches from the BC Freshwater Atlas. Various rules and criteria were applied to the SISS database to QA/QC records and snap features onto the BC Freshwater Atlas (BCFWA). Point records within `siss_records_bcfwa.csv` are attribtued with a corresponding BCFWA `GROUP_CODE` and `LINEAR_FEATURE_ID` such that records can be joined onto the BCFWA streamlines.
+
+<!-- If the image lives in a subfolder called "images/": -->
+![Overview](images/overview.png)
+
 
 ## Methods
 
