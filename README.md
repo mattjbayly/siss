@@ -11,6 +11,7 @@ The BC Stream Inventory Sample Sites (SISS records) is a valuable database that 
 
 <!-- If the image lives in a subfolder called "images/": -->
 ![Overview](images/overview.png)
+*Figure 1. Overview of BC Stream Inventory Sample Sites.*
 
 
 ## Methods
