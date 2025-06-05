@@ -14,6 +14,9 @@ The BC Stream Inventory Sample Sites (SISS records) is a valuable database that 
 *Figure 1. Overview of BC Stream Inventory Sample Sites.*
 
 
+* BC Stream Inventory Sample Sites (SISS records): https://catalogue.data.gov.bc.ca/dataset/stream-inventory-sample-sites/resource/6730ec79-9e70-4fc1-a021-6530a8910686
+* BC Freshwater Atlas: https://www2.gov.bc.ca/gov/content/data/geographic-data-services/topographic-data/freshwater
+
 ## Methods
 
 Below is a short, illustrative Methods section. Adapt this to describe your own data processing, analysis, or experimental workflow.
