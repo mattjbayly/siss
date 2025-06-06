@@ -49,9 +49,20 @@ The following table describes the columns in `siss_records_bcfwa.csv`.
 
 > **All Other Columns:** See the BC Data Catalogue: Stream Inventory Sample Sites for a detailed description of all other column attributes from the BC SISS database.
 
+## Use Cases
 
-## Footnotes
+Various use case applications include model validation and calibration for instream features such as canopy cover, stream channel geometry, bed type, etc.
 
-Use this dataset at your own discretion. Standalone R code to process records will be made available soon.
+<!-- If the image lives in a subfolder called "images/": -->
+![Overview](images/use_case.png)
+*Figure 2. Example use case application: reviewing change in stream channel geometry parameters across channel pattern clases*
+
+
+## Footnotes and Citation
+
+Use this dataset at your own discretion. Standalone R code to process records will be made available soon. Reccomended Citation:
+
+Bayly, M. J. (2025, June 5). *BC Stream Inventory Sample Sites and BCFWA* [Derived Data set]. GitHub. Retrieved June 5, 2025, from https://github.com/mattjbayly/siss
+
 
 ---
