@@ -49,13 +49,17 @@ The following table describes the columns in `siss_records_bcfwa.csv`.
 
 > **All Other Columns:** See the BC Data Catalogue: Stream Inventory Sample Sites for a detailed description of all other column attributes from the BC SISS database.
 
+![Overview](images/additional.png)
+*Figure 2. Additional SISS field attributes*
+
+
 ## Use Cases
 
 Various use case applications include model validation and calibration for instream features such as canopy cover, stream channel geometry, bed type, etc.
 
 <!-- If the image lives in a subfolder called "images/": -->
 ![Overview](images/use_case.png)
-*Figure 2. Example use case application: reviewing change in stream channel geometry parameters across channel pattern clases*
+*Figure 3. Example use case application: reviewing change in stream channel geometry parameters across channel pattern clases*
 
 
 ## Footnotes and Citation
