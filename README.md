@@ -1,10 +1,5 @@
 # BC Stream Inventory Sample Sites and BCFWA
 
-
-
-https://catalogue.data.gov.bc.ca/dataset/stream-inventory-sample-sites/resource/6730ec79-9e70-4fc1-a021-6530a8910686
-
-
 ## Overview
 
 The BC Stream Inventory Sample Sites (SISS records) is a valuable database that compiles thousands of standardized instream measurements from the BC Fisheries Information Summary System (FISS) records across BC. This analysis applied various filter criteria and rules to snap the BC Stream Inventory Sample Sites point observations onto stream reaches from the BC Freshwater Atlas. Various rules and criteria were applied to the SISS database to QA/QC records and snap features onto the BC Freshwater Atlas (BCFWA). Point records within `siss_records_bcfwa.csv` are attribtued with a corresponding BCFWA `GROUP_CODE` and `LINEAR_FEATURE_ID` such that records can be joined onto the BCFWA streamlines.
@@ -34,29 +29,29 @@ The following steps were applied to filter out SISS records that had obvious iss
 - This data filtering exercise results in about ~65,000 SISS records successfully snapped to BCFWA stream reaches.
 
 
-
 ## Field Attributes
 
 The following table describes the columns in `siss_records_bcfwa.csv`.
 
-| Column Name        | Data Type    | Description                                                    |
-|--------------------|--------------|----------------------------------------------------------------|
-| `record_id`        | Integer      | Unique identifier for each observation.                        |
-| `event_date`       | Date         | Date of the event (ISO 8601 format: YYYY-MM-DD).               |
-| `location`         | String       | Location where the measurement was taken (e.g., city name).    |
-| `Variable_A`       | Numeric      | Primary measurement variable A (e.g., temperature in °C).      |
-| `Variable_B`       | Numeric      | Secondary measurement variable B (e.g., humidity in %).        |
-| `status_flag`      | Boolean      | Indicates whether the record passed quality control (`TRUE`/`FALSE`). |
-| `notes`            | String       | Free-text notes or comments associated with each record.       |
+| Column Name         | Data Type | Description                                                                                                         |
+|---------------------|-----------|---------------------------------------------------------------------------------------------------------------------|
+| `GROUP_CODE`        | String    | Group code from the BCFWA (e.g., LFRA, SQAM, etc.).                                                                 |
+| `LINEAR_FEATURE_ID` | Integer   | Linear Feature ID from the BCFWA (unique streamline attribute).                                                      |
+| `stream_order`      | Integer   | Stream Order from BCFWA.                                                                                             |
+| `snap_dist`         | Numeric   | Snap distance in meters from original location.                                                                     |
+| `epsg_code`         | Integer   | EPSG code for UTM zone (spatial projection code for GIS).                                                           |
+| `new_x`             | Numeric   | New x location after snapping (see `epsg_code` for projection).                                                      |
+| `new_y`             | Numeric   | New y location after snapping (see `epsg_code` for projection).                                                      |
+| `new_z`             | Numeric   | New z location (elevation) after snapping.                                                                          |
+| `date`              | String    | Survey date from SISS record (if available).                                                                         |
+| `reach_slope`       | Numeric   | Reach slope calculated from rise/run and BCFWA z (elevation geometry). Can be compared to field-measured channel slope (`GRADIENT`). |
+| `sinuosity`         | Numeric   | Stream reach sinuosity calculated from the BCFWA streamline geometry.                                                |
 
-> **Tip:** If you add new columns to the CSV, update this table accordingly. This helps collaborators understand your data without having to inspect raw files.
+> **All Other Columns:** See the BC Data Catalogue: Stream Inventory Sample Sites for a detailed description of all other column attributes from the BC SISS database.
+
 
 ## Footnotes
 
-Some additional context or external references can be provided as footnotes. For example, if you rely on an external dataset or a published paper, you can cite it here:
-
-This analysis uses temperature and humidity data from a regional monitoring station. For more details on the monitoring protocol, see the official documentation[^1].
-
-[^1]: See _BC Stream Inventory Sample Sites Data Record_ (2022) at [https://catalogue.data.gov.bc.ca/dataset/stream-inventory-sample-sites/resource/6730ec79-9e70-4fc1-a021-6530a8910686](https://catalogue.data.gov.bc.ca/dataset/stream-inventory-sample-sites/resource/6730ec79-9e70-4fc1-a021-6530a8910686)
+Use this dataset at your own discretion. Standalone R code to process records will be made available soon.
 
 ---
